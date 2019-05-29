@@ -1,29 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+   hello app.vue
+   <div>
+     <!--创建路由切换的方法-->
+     <!-- <router-link to="/home">首页</router-link>
+     <router-link to="/list">列表</router-link>
+     <router-link to="/mine">我的</router-link> -->
+     <router-link
+      v-for="nav in navs"
+      :key="nav.id"
+      :to="nav.path"
+     >{{nav.title}}</router-link>
+   </div>
+   <router-view></router-view><!--显示路由组件的位置-->
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+  .router-link-active{
+    color:plum;
+  }
+  // .router-link-exact-active{
+  //   color:purple;
+  // }
+</style>
+
+<script>
+export default {
+  data(){
+    return{
+      navs:[
+        {id:1,title:"首页",path:"/home"},
+        {id:2,title:"列表",path:"/list"},
+        {id:3,title:"我的",path:"/mine"},
+      ]
     }
+  },
+  created(){
+
   }
 }
-</style>
+</script>
